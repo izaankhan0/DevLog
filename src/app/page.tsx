@@ -1,8 +1,30 @@
-import Image from "next/image";
 import { Search } from "lucide-react";
 import PostPreview from "./components/PostPreview";
 
 export default function Home() {
+  let posts = [
+    {
+      title: "TITLE TITLE TITLE TITLE",
+      date: "11/12/2006",
+      description:
+        "loorem",
+      imgSrc: "https://t4.ftcdn.net/jpg/03/14/81/65/360_F_314816591_yBAWvMvnpTW05AP0q4DCs5B6y2gnL9xA.jpg",
+    },
+    {
+      title: "TITLE TITLE TITLE TITLE",
+      date: "11/12/2006",
+      description:
+        "loorem",
+      imgSrc: "https://t4.ftcdn.net/jpg/03/14/81/65/360_F_314816591_yBAWvMvnpTW05AP0q4DCs5B6y2gnL9xA.jpg",
+    },
+    {
+      title: "TITLE TITLE TITLE TITLE",
+      date: "11/12/2006",
+      description:
+        "loorem",
+      imgSrc: "https://t4.ftcdn.net/jpg/03/14/81/65/360_F_314816591_yBAWvMvnpTW05AP0q4DCs5B6y2gnL9xA.jpg",
+    },
+  ];
   return (
     <main style={{ fontFamily: "Poppins" }} className="py-10">
       <div className="flex flex-col justify-center items-center">
@@ -34,9 +56,18 @@ export default function Home() {
             placeholder="Search posts"
           />
         </div>
-        <PostPreview title="TITLE TITLE TITLE TITLE" date="11/12/2006" description="loorem lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem " imgSrc="https://t4.ftcdn.net/jpg/03/14/81/65/360_F_314816591_yBAWvMvnpTW05AP0q4DCs5B6y2gnL9xA.jpg"/>
-        <PostPreview title="TITLE TITLE TITLE TITLE" date="11/12/2006" description="loorem lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem " imgSrc="https://t4.ftcdn.net/jpg/03/14/81/65/360_F_314816591_yBAWvMvnpTW05AP0q4DCs5B6y2gnL9xA.jpg"/>
-        <PostPreview title="TITLE TITLE TITLE TITLE" date="11/12/2006" description="loorem lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem " imgSrc="https://t4.ftcdn.net/jpg/03/14/81/65/360_F_314816591_yBAWvMvnpTW05AP0q4DCs5B6y2gnL9xA.jpg"/>
+        {posts.map((post, index) => {
+          return (
+            <PostPreview
+              key={index + 1}
+              id={index + 1}
+              title={post.title}
+              date={post.date}
+              description={post.description}
+              imgSrc={post.imgSrc}
+            />
+          );
+        })}
       </div>
     </main>
   );
