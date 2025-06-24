@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { Search } from "lucide-react";
+import PostPreview from "./components/PostPreview";
 
 export default function Home() {
   return (
-    <main style={{ fontFamily: "Poppins" }} className="pt-10">
+    <main style={{ fontFamily: "Poppins" }} className="py-10">
       <div className="flex flex-col justify-center items-center">
         {/* <Image
           src="/devlog.png"
@@ -33,6 +34,9 @@ export default function Home() {
             placeholder="Search posts"
           />
         </div>
+        <PostPreview title="TITLE TITLE TITLE TITLE" date="11/12/2006" description="loorem lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem " imgSrc="https://t4.ftcdn.net/jpg/03/14/81/65/360_F_314816591_yBAWvMvnpTW05AP0q4DCs5B6y2gnL9xA.jpg"/>
+        <PostPreview title="TITLE TITLE TITLE TITLE" date="11/12/2006" description="loorem lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem " imgSrc="https://t4.ftcdn.net/jpg/03/14/81/65/360_F_314816591_yBAWvMvnpTW05AP0q4DCs5B6y2gnL9xA.jpg"/>
+        <PostPreview title="TITLE TITLE TITLE TITLE" date="11/12/2006" description="loorem lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem " imgSrc="https://t4.ftcdn.net/jpg/03/14/81/65/360_F_314816591_yBAWvMvnpTW05AP0q4DCs5B6y2gnL9xA.jpg"/>
       </div>
     </main>
   );
