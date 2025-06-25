@@ -4,7 +4,20 @@ import { Search } from "lucide-react";
 import PostPreview from "./components/PostPreview";
 
 export default function Home() {
-  const [posts, setPosts] = useState([]);
+  type Post = {
+  title: string;
+  date: string;
+  description: string;
+  imgUrl?: string | null;
+  entries: {
+    title: string;
+    datetime: string;
+    entry: string;
+    imgUrl?: string | null;
+  }[];
+};
+  const [posts, setPosts] = useState<Post[]>([]);
+
 
   useEffect(() => {
     fetch("/api/posts")
@@ -45,7 +58,7 @@ export default function Home() {
             title={post.title}
             date={post.date}
             description={post.description}
-            imgSrc={post.imgUrl}
+            imgSrc={post.imgUrl ?? undefined}
           />
         ))}
       </div>
