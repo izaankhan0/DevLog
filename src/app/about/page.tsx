@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <div style={{ fontFamily: "Poppins" }} className="min-h-screen  text-green-300 px-6 py-12 md:px-20 md:py-20 font-[var(--font-geist-sans)]">
-      <h1 className="text-4xl sm:text-5xl font-bold mb-10">About Me</h1>
+      <h1 className="text-4xl text-center sm:text-left sm:text-5xl font-bold mb-10">About Me</h1>
 
       <div className="flex flex-col sm:flex-row items-center gap-6 mb-10">
         <img

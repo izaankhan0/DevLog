@@ -25,7 +25,7 @@ export default function PostPreview({
         <p className="text-sm text-gray-400">{date}</p>
         <p className="text-green-300 mt-2 text-sm sm:text-md">{description}</p>
         <Link href={"/posts/" + id}>
-          <button className="mt-4 rounded-xl text-green-700 cursor-pointer hover:text-green-400 hover:bg-green-700 duration-150 transition bg-green-400 px-4 py-1">
+          <button className="mt-4 rounded-md text-green-700 cursor-pointer hover:text-green-400 hover:bg-green-700 duration-150 transition bg-green-400 px-4 py-1">
             Read More
           </button>
         </Link>
