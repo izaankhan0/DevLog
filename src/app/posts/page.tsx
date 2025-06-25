@@ -5,7 +5,20 @@ import PostCard from "../components/PostCard";
 import { Search } from "lucide-react";
 
 export default function Posts() {
-  const [posts, setPosts] = useState([]);
+  type Post = {
+  title: string;
+  date: string;
+  description: string;
+  imgUrl?: string | null;
+  entries: {
+    title: string;
+    datetime: string;
+    entry: string;
+    imgUrl?: string | null;
+  }[];
+};
+
+const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     // Fetch posts from backend
@@ -29,14 +42,14 @@ export default function Posts() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {posts.map((post, index) => (
+        {posts.map((post: Post, index: number) => (
           <PostCard
             key={index}
             id={index + 1}
             title={post.title}
             date={post.date}
             description={post.description}
-            imgSrc={post.imgUrl} // 👈 use imgUrl here, not imgSrc
+            imgSrc={post.imgUrl ?? undefined}
           />
         ))}
       </div>
