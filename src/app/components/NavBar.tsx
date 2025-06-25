@@ -13,7 +13,7 @@ import {
 export default function NavBar() {
   const pathname = usePathname();
   function toggle() {
-    document.getElementById("van")?.classList.toggle("translate-x-full");
+    document.getElementById("van")?.classList.toggle("translate-x-px");
   }
   return (
     <ClerkProvider>
@@ -27,7 +27,7 @@ export default function NavBar() {
       <div
         id="van"
         style={{ fontFamily: "Poppins" }}
-        className="transition duration-500 ease-in-out backdrop-blur-3xl pt-20 z-200 flex lg:hidden flex-col justify-start items-center fixed h-full right-0 w-70"
+        className="translate-x-full transition duration-500 ease-in-out backdrop-blur-3xl pt-20 z-200 flex lg:hidden flex-col justify-start items-center fixed h-full right-0 w-70"
       >
 
         <div>
@@ -80,8 +80,8 @@ export default function NavBar() {
             Admin
           </Link>
         </ul>
-        <div className="flex justify-center items-center mx-5">
-          <div className="mx-4 h-10 flex items-center">
+        <div className="flex justify-center items-center mx-5 flex-col">
+          <div className="mx-4 h-10 flex items-center mb-6">
             <Search className="h-5 absolute ml-2 text-[#00330a]" />
             <input
               type="text"
