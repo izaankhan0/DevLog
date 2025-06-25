@@ -3,9 +3,24 @@
 import { useEffect, useState } from "react";
 
 export default function AdminPage() {
+  type Entry = {
+    title: string;
+    datetime: string;
+    entry: string;
+    imgUrl?: string | null;
+  };
+
+  type Post = {
+    title: string;
+    date: string;
+    description: string;
+    imgUrl?: string | null;
+    entries: Entry[];
+  };
   const [showModal, setShowModal] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
-  const [postsList, setPostsList] = useState<any[]>([]);
+  // ✅ new
+  const [postsList, setPostsList] = useState<Post[]>([]);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -313,7 +328,7 @@ export default function AdminPage() {
                     className="border border-gray-300 rounded px-3 py-2"
                   >
                     {postsList[deleteData.postIndex]?.entries.map(
-                      (entry: any, idx: number) => (
+                      (entry: Entry, idx: number) => (
                         <option key={idx} value={idx}>
                           {entry.title}
                         </option>

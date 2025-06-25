@@ -1,4 +1,4 @@
-let posts: {
+const posts: {
   title: string;
   date: string;
   description: string;

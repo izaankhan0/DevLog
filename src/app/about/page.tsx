@@ -16,7 +16,7 @@ export default function About() {
       </div>
 
       <p className="text-gray-300 text-base mb-10">
-        Hi, I'm Izaan Khan, a software engineer passionate about building innovative solutions and
+        Hi, I&apos;m Izaan Khan, a software engineer passionate about building innovative solutions and
         sharing my knowledge with the community. I have a strong background in web development, cloud
         computing, and machine learning. In my free time, I enjoy exploring new technologies,
         contributing to open-source projects, and writing about my experiences on this blog.
@@ -24,7 +24,7 @@ export default function About() {
 
       <h2 className="text-2xl font-bold mb-4">Interests</h2>
       <p className="text-gray-300 text-base mb-10">
-        I'm deeply interested in a variety of topics within the tech world and beyond. Some of my key
+        I&apos;m deeply interested in a variety of topics within the tech world and beyond. Some of my key
         interests include:
         <br />
         - <strong>Web Development:</strong> Building scalable and user-friendly web applications using
@@ -48,7 +48,7 @@ export default function About() {
         The purpose of this blog is to serve as a platform for me to document my learning journey, share
         my technical insights, and connect with other developers. I aim to provide valuable content that
         helps others grow their skills and stay updated with the latest trends in the industry. Whether
-        you're a seasoned developer or just starting out, I hope you find something useful and inspiring
+        you&apos;re a seasoned developer or just starting out, I hope you find something useful and inspiring
         here.
       </p>
     </div>

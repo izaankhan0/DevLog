@@ -19,12 +19,12 @@ export default function Home() {
           Welcome to DevLog
         </h1>
         <p className="text-green-300 text-justify">
-          I'm Izaan Khan — a full-blooded digital architect with a poetic soul
+          I&apos;m Izaan Khan — a full-blooded digital architect with a poetic soul
           and a keyboard on fire. I turn caffeine and creativity into modern,
-          responsive websites that don't just work... they *wow*. Founder of
+          responsive websites that don&apos;t just work... they *wow*. Founder of
           Websters, a startup helping students showcase their journeys through
           sleek portfolio sites. I mix art with code, and logic with intuition —
-          because the internet doesn't need another boring site.
+          because the internet doesn&apos;t need another boring site.
         </p>
       </div>
 

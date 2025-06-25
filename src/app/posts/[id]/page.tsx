@@ -3,7 +3,23 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 
 export default function Post() {
-  const [post, setPost] = useState<any>(null);
+  type Entry = {
+  title: string;
+  datetime: string;
+  entry: string;
+  imgUrl?: string | null;
+};
+
+type Post = {
+  title: string;
+  date: string;
+  description: string;
+  imgUrl?: string | null;
+  entries: Entry[];
+};
+
+  const [post, setPost] = useState<Post | null>(null);
+
   const params = useParams(); // Get [id] from URL
   const id = Number(params.id); // Convert string to number
 
@@ -59,7 +75,7 @@ export default function Post() {
       <hr className="my-10 border-green-700" />
 
       {/* LOG ENTRIES */}
-      {post.entries?.map((entry: any, idx: number) => (
+      {post.entries?.map((entry: Entry, idx: number) => (
         <div key={idx} className="flex flex-col sm:flex-row gap-5 mb-10">
           <div className="flex-1">
             <p className="text-xl sm:text-2xl font-bold text-green-400">
