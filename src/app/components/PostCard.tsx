@@ -14,7 +14,7 @@ export default function PostPreview({
   date: string;
   imgSrc?: string;}){
     return(
-        <div style={{ fontFamily: "Poppins" }} className="flex flex-col-reverse justify-between bg-green-800 p-5 rounded-lg shadow-lg mb-6">
+        <div style={{ fontFamily: "Poppins" }} className="flex flex-col-reverse justify-between bg-green-800 p-5 rounded-lg shadow-lg mb-6 overflow-hidden">
             <div>
                 <h2 className="text-xl sm:text-2xl font-bold text-green-400">{title}</h2>
                 <p className="text-sm text-gray-400">{date}</p>

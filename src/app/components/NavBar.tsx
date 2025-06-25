@@ -6,8 +6,6 @@ import Image from "next/image";
 import {
   ClerkProvider,
   SignInButton,
-  SignUpButton,
-  SignedIn,
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
@@ -52,6 +50,14 @@ export default function NavBar() {
           >
             Posts
           </Link>
+          <Link
+            className={`mx-4 cursor-pointer font-[500] transition duration-100 hover:bg-green-800 py-2 rounded-md px-4 ${
+              pathname === "/admin" ? "bg-green-400 text-[#00330a]" : ""
+            }`}
+            href="/admin"
+          >
+            Admin
+          </Link>
         </ul>
         <h1 className="text-3xl font-extrabold text-center text-green-400 w-2/5">
           DevLog
@@ -69,14 +75,6 @@ export default function NavBar() {
             <SignInButton mode="modal" />
           </SignedOut>
           <UserButton />
-          {/* <SignedOut>
-              <SignInButton />
-              <SignUpButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn> */}
-          {/* <div className="h-12 w-12 rounded-full bg-green-700"></div> */}
         </div>
       </nav>
     </ClerkProvider>

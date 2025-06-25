@@ -1,40 +1,84 @@
+"use client";
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+
 export default function Post() {
+  const [post, setPost] = useState<any>(null);
+  const params = useParams(); // Get [id] from URL
+  const id = Number(params.id); // Convert string to number
+
+  useEffect(() => {
+    fetch("/api/posts")
+      .then((res) => res.json())
+      .then((data) => {
+        const found = data[id - 1]; // Assuming ID starts from 1
+        setPost(found);
+      });
+  }, [id]);
+
+  if (!post)
+    return <p className="text-center py-10 text-gray-400">Loading...</p>;
+  function formatAMPM(datetime: string) {
+    const date = new Date(datetime);
+    return date.toLocaleString("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+  }
+
   return (
-    <div style={{ fontFamily: "Poppins" }}>
-      <div className="flex flex-row pt-10 pb-5">
-        <div>
+    <div style={{ fontFamily: "Poppins" }} className="p-5 sm:p-10">
+      <div className="mb-2">
+        <button
+          onClick={() => (window.location.href = "/posts")}
+          className="text-green-500 bg-black px-10 py-4 rounded-md hover:text-black cursor-pointer hover:bg-green-400 transition duration-200"
+        >
+          ← Back to Posts
+        </button>
+      </div>
+      {/* MAIN POST CONTENT */}
+      <div className="flex flex-col sm:flex-row pt-10 pb-5 gap-6">
+        <div className="flex-1">
           <h1 className="text-xl sm:text-2xl font-bold text-green-400">
-            TITLE TITLE TITLE TITLE TITLE
+            {post.title}
           </h1>
-          <p className="text-lg my-1 text-gray-400">11/11/2009</p>
+          <p className="text-lg my-1 text-gray-400">{post.date}</p>
           <p className="text-green-300 mt-2 text-sm sm:text-md">
-            description description description description description
-            description description description description description
-            description description description description description
-            description description description description description
+            {post.description}
           </p>
         </div>
-        <img
-          className="h-60 rounded-md"
-          src="https://t4.ftcdn.net/jpg/03/14/81/65/360_F_314816591_yBAWvMvnpTW05AP0q4DCs5B6y2gnL9xA.jpg"
-          alt=""
-        />
+        {post.imgUrl && (
+          <img className="h-60 rounded-md" src={post.imgUrl} alt="post" />
+        )}
       </div>
-      <hr />
-      <div className="my-10">
-        <div className="flex flex-row h-50">
-          <div>
-            <p className="text-xl sm:text-2xl font-bold text-green-400">Added details to cards</p>
-            <p className="text-md text-gray-400 my-1">12/11/2005 - 5:00 PM</p>
-            <p className="text-green-300 mt-2 ">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+
+      <hr className="my-10 border-green-700" />
+
+      {/* LOG ENTRIES */}
+      {post.entries?.map((entry: any, idx: number) => (
+        <div key={idx} className="flex flex-col sm:flex-row gap-5 mb-10">
+          <div className="flex-1">
+            <p className="text-xl sm:text-2xl font-bold text-green-400">
+              {entry.title}
             </p>
+            <p className="text-md text-gray-400 my-1">
+              {formatAMPM(entry.datetime)}
+            </p>
+            <p className="text-green-300 mt-2">{entry.entry}</p>
           </div>
-          <img className="rounded-md" src="https://t4.ftcdn.net/jpg/03/14/81/65/360_F_314816591_yBAWvMvnpTW05AP0q4DCs5B6y2gnL9xA.jpg" alt="" />
+          {post.imgUrl && (
+            <img
+              className="rounded-md max-h-40"
+              src={post.imgUrl}
+              alt="entry-img"
+            />
+          )}
         </div>
-      </div>
+      ))}
     </div>
   );
 }

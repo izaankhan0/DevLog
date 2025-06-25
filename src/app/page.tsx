@@ -1,40 +1,20 @@
+"use client";
+import { useEffect, useState } from "react";
 import { Search } from "lucide-react";
 import PostPreview from "./components/PostPreview";
 
 export default function Home() {
-  let posts = [
-    {
-      title: "TITLE TITLE TITLE TITLE",
-      date: "11/12/2006",
-      description:
-        "loorem",
-      imgSrc: "https://t4.ftcdn.net/jpg/03/14/81/65/360_F_314816591_yBAWvMvnpTW05AP0q4DCs5B6y2gnL9xA.jpg",
-    },
-    {
-      title: "TITLE TITLE TITLE TITLE",
-      date: "11/12/2006",
-      description:
-        "loorem",
-      imgSrc: "https://t4.ftcdn.net/jpg/03/14/81/65/360_F_314816591_yBAWvMvnpTW05AP0q4DCs5B6y2gnL9xA.jpg",
-    },
-    {
-      title: "TITLE TITLE TITLE TITLE",
-      date: "11/12/2006",
-      description:
-        "loorem",
-      imgSrc: "https://t4.ftcdn.net/jpg/03/14/81/65/360_F_314816591_yBAWvMvnpTW05AP0q4DCs5B6y2gnL9xA.jpg",
-    },
-  ];
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/posts")
+      .then((res) => res.json())
+      .then((data) => setPosts(data.slice(0, 3))); // 💡 Get only first 3 posts
+  }, []);
+
   return (
     <main style={{ fontFamily: "Poppins" }} className="py-10">
       <div className="flex flex-col justify-center items-center">
-        {/* <Image
-          src="/devlog.png"
-          alt="DevLog Logo"
-          width={150}
-          height={150}
-          className=""
-        /> */}
         <h1 className="text-green-400 text-4xl mb-5 font-bold">
           Welcome to DevLog
         </h1>
@@ -47,6 +27,7 @@ export default function Home() {
           because the internet doesn't need another boring site.
         </p>
       </div>
+
       <div>
         <div className="my-8 h-10 flex items-center">
           <Search className="h-5 absolute ml-2 text-[#00330a]" />
@@ -56,18 +37,17 @@ export default function Home() {
             placeholder="Search posts"
           />
         </div>
-        {posts.map((post, index) => {
-          return (
-            <PostPreview
-              key={index + 1}
-              id={index + 1}
-              title={post.title}
-              date={post.date}
-              description={post.description}
-              imgSrc={post.imgSrc}
-            />
-          );
-        })}
+
+        {posts.map((post, index) => (
+          <PostPreview
+            key={index}
+            id={index + 1}
+            title={post.title}
+            date={post.date}
+            description={post.description}
+            imgSrc={post.imgUrl}
+          />
+        ))}
       </div>
     </main>
   );
