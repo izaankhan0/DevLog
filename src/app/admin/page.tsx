@@ -18,6 +18,7 @@ export default function AdminPage() {
     postIndex: 0,
     title: "",
     entry: "",
+    imgUrl: "", // <- new field
   });
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -72,6 +73,8 @@ export default function AdminPage() {
         title: updateData.title,
         datetime: new Date().toISOString(),
         entry: updateData.entry,
+        imgUrl:
+          updateData.imgUrl.trim() === "" ? null : updateData.imgUrl.trim(),
       },
     };
 
@@ -212,12 +215,11 @@ export default function AdminPage() {
                 ))}
               </select>
               <input
-                name="title"
-                placeholder="Log Title"
+                name="imgUrl"
+                placeholder="Entry Image URL (optional)"
                 className="border border-gray-300 rounded px-3 py-2"
-                value={updateData.title}
+                value={updateData.imgUrl}
                 onChange={handleUpdateChange}
-                required
               />
               <textarea
                 name="entry"

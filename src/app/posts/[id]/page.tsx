@@ -70,10 +70,11 @@ export default function Post() {
             </p>
             <p className="text-green-300 mt-2">{entry.entry}</p>
           </div>
-          {post.imgUrl && (
+
+          {entry.imgUrl && (
             <img
               className="rounded-md max-h-40"
-              src={post.imgUrl}
+              src={entry.imgUrl}
               alt="entry-img"
             />
           )}

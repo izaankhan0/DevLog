@@ -25,12 +25,17 @@ export async function PATCH(req: Request) {
   const { postIndex, logEntry } = await req.json();
 
   if (posts[postIndex]) {
-    posts[postIndex].entries.push(logEntry);
+    posts[postIndex].entries.push({
+      ...logEntry,
+      imgUrl: logEntry.imgUrl, // ensure imgUrl is either a string or null
+    });
+
     return Response.json({ success: true, post: posts[postIndex] });
   }
 
   return Response.json({ error: "Invalid index" }, { status: 400 });
 }
+
 
 export async function DELETE(req: Request) {
   const { mode, postIndex, entryIndex } = await req.json();
